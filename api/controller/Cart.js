@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { deleteOne } = require('../model/Cart');
 const Cart = require('../model/Cart')
 
 

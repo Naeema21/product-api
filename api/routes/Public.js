@@ -5,12 +5,16 @@ const ProductController = require('../controller/Product')
 const WishlistController = require('../controller/Wishlist');
 const CartController = require('../controller/Cart')
 const CompareController =require('../controller/Compare')
-
+const OrderController =require('../controller/Order')
 
 //product routes
 router.get('/product' , ProductController.getAllData);
 router.post('/product' , ProductController.addProduct);
 router.get('/product/category/:category' , ProductController.getProductByCategory)
+router.get('/product/subcategory/:subcategory' , ProductController.getProductBySUbcategory)
+router.get('/product/size/:size' , ProductController.getProductBySize)
+
+
 router.get('/product/:id' , ProductController.getSingleProduct);
 // router.post('/product/:id' , ProductController.updateProduct);
 // router.delete('/product/:id' , ProductController.deleteData)
@@ -29,6 +33,10 @@ router.delete('/cart/:id' , CartController.deletecart)
 router.get('/compare/:userId', CompareController.getAllData );
 router.post('/compare', CompareController.addCompare );
 router.delete('/compare/:id', CompareController.deleteData );
+
+//order routes
+router.get('/order/:userId' ,  OrderController.getData)
+router.post('/order' , OrderController.addorder)
 
 
 module.exports = router;

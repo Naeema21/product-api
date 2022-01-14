@@ -53,6 +53,34 @@ const getProductByCategory = async (req, res,) => {
     }
 };
 
+const getProductBySUbcategory = async (req, res,) => {
+    const name = req.params.subcategory;
+    try {
+        const product = await Product.find(
+            { subCategory: { $regex: name, $options: 'i' } }
+        )
+        res.status(200).json(product);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            message: error
+        });
+    }
+};
+const getProductBySize = async (req, res,) => {
+    const name = req.params.size;
+    try {
+        const product = await Product.find(
+            { size: { $regex: name, $options: 'i' } }
+        )
+        res.status(200).json(product);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            message: error
+        });
+    }
+};
 
 //add product
 const addProduct = async (req, res) => {
@@ -119,6 +147,7 @@ module.exports =
     deleteData, 
     getSingleProduct, 
     updateProduct,
-    getProductByCategory
-
+    getProductByCategory,
+    getProductBySUbcategory,
+    getProductBySize
 }

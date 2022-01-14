@@ -6,7 +6,7 @@ const Wishlist = require("../model/Wishlist");
 const getAllData = async (req, res,) => {
     try {
         const wishList = await Wishlist.find({ "user": req.params.userId })
-            .populate('product', 'name category price size image').sort({ _id: -1 })
+            .populate('product', 'name category price size image ABV').sort({ _id: -1 })
         if (wishList.length != 0) {
             res.status(200).json({
                 totalwishlist: wishList.length,

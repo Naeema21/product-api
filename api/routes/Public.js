@@ -16,7 +16,7 @@ router.get('/product/size/:size' , ProductController.getProductBySize)
 router.post('/product/review/:id' , ProductController.addReview)
 
 router.get('/product/:id' , ProductController.getSingleProduct);
-router.post('/product/:id' , ProductController.updateProduct);
+// router.post('/product/:id' , ProductController.updateProduct);
 // router.delete('/product/:id' , ProductController.deleteData)
 
 //wishlist routes 

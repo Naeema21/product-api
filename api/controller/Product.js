@@ -150,7 +150,7 @@ const addReview = async (req, res,) => {
         name: req.body.name,
         email: req.body.email,
         rating: req.body.rating,
-        date: new Date(),
+        date: new Date().toDateString(),
     };
 
     Product.findById(id, (err, data) => {

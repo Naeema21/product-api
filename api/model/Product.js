@@ -46,7 +46,7 @@ const ProductSchema = mongoose.Schema({
         email: String,
         name: String,
         rating: Number,
-        date: { type: String, default: new Date() }
+        date: { type: String, default: new Date().toDateString() }
     }],
 
 

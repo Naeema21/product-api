@@ -5,42 +5,50 @@ const ProductSchema = mongoose.Schema({
         type: String,
         required: 'Please Enter Name'
     },
-    category:{
-        type:String,
+    category: {
+        type: String,
         required: 'Please Enter Category'
     },
-    price:{
-        type:Number,
+    price: {
+        type: Number,
         required: 'Please Enter Price'
     },
-    size:{
-        type:String,
-        required:'Please Enter Size'
+    size: {
+        type: String,
+        required: 'Please Enter Size'
     },
-    rating:{
-        type:Number,
+    rating: {
+        type: Number,
         required: 'Please Enter ratings'
     },
-    image:{
-        type:String,
+    image: {
+        type: String,
         required: 'Please Select Image'
     },
-    description:{
-        type:String,
-        required:'Please Select description'
+    description: {
+        type: String,
+        required: 'Please Select description'
     },
     tesetingNote: {
         type: String
     },
-    FoodPairing:{
-        type:String
+    FoodPairing: {
+        type: String
     },
-    ABV:{
-        type:String
+    ABV: {
+        type: String
     },
-    subCategory:{
-        type:String
-    }
+    subCategory: {
+        type: String
+    },
+    review: [{
+        comment: String,
+        email: String,
+        name: String,
+        rating: Number,
+        date: { type: String, default: new Date() }
+    }],
+
 
 }, { timestamps: true });
 

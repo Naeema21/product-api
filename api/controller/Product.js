@@ -90,12 +90,12 @@ const addProduct = async (req, res) => {
         price: req.body.price,
         rating: req.body.rating,
         image: req.body.image,
-        size:req.body.size,
-        description:req.body.description,
-        testingNote:req.body.testingNote,
-        FoodPairing:req.body.FoodPairing,
-        ABV:req.body.ABV,
-        subCategory:req.body.subCategory
+        size: req.body.size,
+        description: req.body.description,
+        testingNote: req.body.testingNote,
+        FoodPairing: req.body.FoodPairing,
+        ABV: req.body.ABV,
+        subCategory: req.body.subCategory
     });
     product.save()
         .then(result => {
@@ -140,14 +140,48 @@ const deleteData = async (req, res) => {
     }
 }
 
+
+//addreview
+const addReview = async (req, res,) => {
+    const id = req.params.id;
+
+    const reviews = {
+        comment: req.body.comment,
+        name: req.body.name,
+        email: req.body.email,
+        rating: req.body.rating,
+        date: new Date(),
+    };
+
+    Product.findById(id, (err, data) => {
+        if (err || !data || !req.body) {
+            return res.json(`Comment fail. ${id} product doesn't exist.`);
+        } else {
+            //add to comments array of the comment object
+            data.review.push(reviews);
+
+            //   save changes to db
+            data.save((err) => {
+                if (err) {
+                    return res.json("Something's wrong. Please contact admin.");
+                }
+                return res.json({
+                    "Message": "Thank You!",
+                    "comment": reviews
+                });
+            });
+        }
+    });
+};
 module.exports =
 {
     getAllData,
     addProduct,
-    deleteData, 
-    getSingleProduct, 
+    deleteData,
+    getSingleProduct,
     updateProduct,
     getProductByCategory,
     getProductBySUbcategory,
-    getProductBySize
+    getProductBySize,
+    addReview
 }
